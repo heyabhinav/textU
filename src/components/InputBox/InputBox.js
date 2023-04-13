@@ -58,9 +58,9 @@ function InputBox(props){
             <button type="button" className="btn btn-primary mx-1 my-1" onClick={handleNewLine}>Remove New Line</button>
             <div className="container my-4">
                 <h1>Text Summary</h1>
-                <p>Words : {text.split(" ").length}</p>
+                <p>Words : {text.split(/\s+/).filter((e)=>{return e.length!==0}).length}</p>
                 <p>Characters : {text.length}</p>
-                <p>Reading time : {0.008 * text.split(" ").length}</p>
+                <p>Reading time : {0.008 * text.split(" ").filter((e)=>{return e.length!==0}).length}</p>
                 <br></br>
                 <h3>Preview</h3>
                 <p>{text}</p>
