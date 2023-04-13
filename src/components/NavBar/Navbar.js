@@ -1,18 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function NavBar(props){
+    const [expand, setExpand] = useState('false');
+    const [collapsed, setCollapse] = useState('');
+    const [show, setShow] = useState('');
+    const handleShrink = () =>{
+        if(expand==='true'){
+            setExpand('false');
+            setShow("");
+            setCollapse("collapsed");
+        }else{
+            setExpand('true');
+            setShow('show');
+            setCollapse('');
+        }
+    }
     return (
         <>
         <nav className={`navbar navbar-expand-lg navbar-${props.theme} bg-${props.theme} p-3`}>
             <div className="container-fluid">
             
             <a className="navbar-brand" href="/">{props.title}</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            
+            <button className={`navbar-toggler ${collapsed}`} type="button"
+            data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+            aria-expanded={`${expand}`} aria-label="Toggle navigation" 
+            onClick={handleShrink}>
+                <span className="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <div className={`collapse navbar-collapse ${show}`} id="navbarSupportedContent">
                 <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li className="nav-item mx-2">
                         <Link className="nav-link" to="/">Home</Link>
