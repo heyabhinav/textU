@@ -40,7 +40,7 @@ function App() {
     <Router>
       <div>
       <NavBar title="Text Utilities" theme={theme} toggle={toggleTheme}/>
-      <div className='container'>
+      <div className='container mt-3' style={{height:"50px"}}>
         <Alert alert={alert}/>
       </div>
       <Routes>
